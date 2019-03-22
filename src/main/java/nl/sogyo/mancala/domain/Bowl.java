@@ -7,6 +7,7 @@ public abstract class Bowl  {
 	private Bowl neighbour;
 	private int following;
 	private String end;
+	private SmallBowl firstSmallBowl;
 	
 	public int getBeads() {
 		return beads;
@@ -40,12 +41,20 @@ public abstract class Bowl  {
 		this.following = following;
 	}
 
-	public String getEnd() {
+	public String getFirstorSecond() {
 		return end;
 	}
 
-	public void setEnd(String end) {
+	public void setFirstorSecond(String end) {
 		this.end = end;
+	}
+
+	public SmallBowl getFirstSmallBowl() {
+		return firstSmallBowl;
+	}
+
+	public void setFirstSmallBowl(SmallBowl firstSmallBowl) {
+		this.firstSmallBowl = firstSmallBowl;
 	}
 
 	public int content() {

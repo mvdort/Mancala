@@ -6,16 +6,18 @@ public class Kalaha extends Bowl{
 		//nBeads default=0
 	}
 	
-	public Kalaha(Player owner, Bowl neighbour) {
+	public Kalaha(Player owner, Bowl neighbour, SmallBowl firstSmallBowl) {
 		//nBeads default=0
 		this.setOwner(owner);
 		this.setNeighbour(neighbour);
-		System.out.println("Kalaha made");
+		this.setFirstSmallBowl(firstSmallBowl);
+		System.out.println("Kalaha 1, neighbour: " + this.getNeighbour() + ", content: " + this.getBeads());
 	}
 	
-	public Kalaha(Player owner) {
+	public Kalaha(Player owner, SmallBowl firstSmallBowl) {
 		//second Kalaha, set neighbour to first bowl of opponent
-		System.out.println("Kalaha made (no neighbour yet)");
+		this.setNeighbour(firstSmallBowl);
+		System.out.println("Kalaha 2, neighbour: " + this.getNeighbour() + ", content: " + this.getBeads());
 	}
 
 	public boolean legalMove() {
