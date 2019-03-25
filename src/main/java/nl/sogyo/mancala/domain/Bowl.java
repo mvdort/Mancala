@@ -28,6 +28,22 @@ public abstract class Bowl  {
 	public Bowl getNeighbour() {
 		return neighbour;
 	}
+	
+	public Bowl getNeighbour(int nr) {
+		Bowl neighbourX;
+		if (nr == 0) {
+			neighbourX = this;
+		}
+		else if (nr == 1) {
+			neighbourX = this.getNeighbour();
+			//return neighbourX;
+		}
+		else {
+			neighbourX = this.getNeighbour().getNeighbour(nr-1);
+			//System.out.println("get neighbour...");
+		}
+		return neighbourX;
+	}
 
 	public void setNeighbour(Bowl neighbour) {
 		this.neighbour = neighbour;
@@ -62,15 +78,27 @@ public abstract class Bowl  {
 	}
 	
 	public boolean ownerTurn() {
-		return getOwner().isYourTurn();
+		//System.out.println(this.getOwner().isYourTurn());
+		return this.getOwner().isYourTurn();
 	}
 	
 	public int pass(int toPass) {
+		//System.out.println("To pass: " + toPass);
 		if (toPass == 0) {
+			//System.out.println("to pass is zero " + toPass);
 			this.setBeads(this.getBeads() +1);
+			
+			//check content=1?
+			if (this.getBeads() == 1 && this.ownerTurn() == true) {
+				((SmallBowl)this.opposite()).giveAll();
+			}
+			//else continue
+			
 			//System.out.println("Status player: " + this.getOwner().isYourTurn());
 			this.getOwner().switchPlayer();
+			System.out.println(">>Switch player!<<");
 			//System.out.println("Status player: " + this.getOwner().isYourTurn());
+			
 		}
 		else if (toPass >= 1) {
 			this.setBeads(this.getBeads() + 1);
@@ -79,7 +107,27 @@ public abstract class Bowl  {
 		return this.getBeads();
 	}
 	
+	public Bowl opposite() {
+		return (this.getNeighbour().opposite()).getNeighbour();
+	}
 	
+	public int takeAll(int toTake) {
+		this.setBeads(this.getBeads() + toTake);
+		int beadsToKalaha = this.getBeads();
+		this.setBeads(this.getBeads() - this.getBeads());
+		this.getNeighbour().toKalaha(beadsToKalaha);
+		return this.getBeads();
+	}
+	
+	public int toKalaha(int beadsToKalaha) {
+		if (this instanceof Kalaha) {
+			this.setBeads(this.getBeads() + beadsToKalaha);
+		}
+		else {
+			this.getNeighbour().toKalaha(beadsToKalaha);
+		}
+		return this.getBeads();
+	}
 	
 	
 	

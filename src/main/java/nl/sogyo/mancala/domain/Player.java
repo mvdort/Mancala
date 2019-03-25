@@ -8,12 +8,14 @@ public class Player {
 	//Create player
 	public Player() {
 		this.setYourTurn(true);
+		//System.out.println("p1: " + this.isYourTurn());
 		this.setOpponent(new Player(this)) ;
 	}
 	//Create other player
 	public Player(Player opponent) {
 		this.setOpponent(opponent);
 		this.setYourTurn(!opponent.isYourTurn());
+		//System.out.println("p2: " + this.isYourTurn());
 	}
 	
 	public Player getOpponent() {
@@ -32,6 +34,7 @@ public class Player {
 	public boolean switchPlayer() {
 		this.setYourTurn(!this.isYourTurn());
 		getOpponent().setYourTurn(!this.isYourTurn());
+		
 		return this.isYourTurn();
 	}
 	
