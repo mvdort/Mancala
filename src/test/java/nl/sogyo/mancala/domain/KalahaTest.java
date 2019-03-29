@@ -14,7 +14,7 @@ public class KalahaTest {
 	
 	@Test
 	public void checkPassKalaha() {
-		final int expected = 1;
+		final int expected = 0;
 		SmallBowl bowl1 = new SmallBowl(5, "first");
 		bowl1.setBeads(13);
 		final int actual = bowl1.makeMove();

@@ -205,6 +205,7 @@ public class SmallBowl extends Bowl{
 	
 	
 	void printBoard() {
+		System.out.println("---------------------------------------------------");
 		System.out.println("		Kalaha, content " + this.getFirstSmallBowl().getNeighbour(13).getBeads());
 		System.out.print("SmallBowl 1, content " + this.getFirstSmallBowl().getBeads());
 		System.out.println("  -  SmallBowl 13, content " + this.getFirstSmallBowl().getNeighbour(12).getBeads());
@@ -219,35 +220,6 @@ public class SmallBowl extends Bowl{
 		System.out.print("SmallBowl 6, content " + this.getFirstSmallBowl().getNeighbour(5).getBeads());
 		System.out.println("  -  SmallBowl 8,  content " + this.getFirstSmallBowl().getNeighbour(7).getBeads());
 		System.out.println("		Kalaha, content " + this.getFirstSmallBowl().getNeighbour(6).getBeads());
-		
-	}
-	
-	//public boolean legalMove() {
-	//	boolean legalmove;
-	//	if (this.owner.yourTurn == true && this.nBeads > 0) {
-	//		legalmove = true;
-	//	}
-	//	else {
-	//		legalmove = false;
-	//	}	
-	//	//System.out.println("This is a legal move: " + legalmove);
-	//	return legalmove;
-	//}
-	
-	//public int makeMove() {
-	//	
-	//	if (this.legalMove() == true) {
-	//		//System.out.println("legal move");		
-	//		neighbour.pass(this.nBeads-1);
-	//		this.nBeads = this.nBeads - this.nBeads;
-	//		return this.nBeads;
-	//	}
-	//	else {
-	//		//System.out.println("Not a legal move");
-	//		return this.nBeads;
-	//	}
-	//}
-	
-	
-	
+		System.out.println("---------------------------------------------------");
+	}	
 }
